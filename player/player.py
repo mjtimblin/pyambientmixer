@@ -2,7 +2,7 @@ import pygame
 
 from config import config
 from models.environment import Environment
-from player_channel import PlayerChannel
+from player.player_channel import PlayerChannel
 
 
 class Player:
