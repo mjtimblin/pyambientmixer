@@ -1,8 +1,8 @@
 import pygame
 
-from src.config import config
-from src.models.environment import Environment
-from src.player_channel import PlayerChannel
+from config import config
+from models.environment import Environment
+from player_channel import PlayerChannel
 
 
 class Player:

@@ -6,12 +6,12 @@ import sys
 import dacite
 from typing import Optional
 
-from src.config import config
-from src.datasources import AmbientMixer
-from src.models.environment import Environment
+from config import config
+from datasources import AmbientMixer
+from models.environment import Environment
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
-from src.player import Player  # noqa: E402
+from player import Player  # noqa: E402
 
 
 def main():
@@ -32,6 +32,9 @@ def main():
                 environment = instance.environment
                 break
     elif args.environment is not None:
+        if not os.path.exists(config['paths']['environments_file']):
+            print('No environments have been downloaded yet. Download an environment first using the --url argument.')
+            sys.exit(1)
         environments = json.loads(open(config['paths']['environments_file'], 'r').read())
         for e in environments:
             if e['id'] == args.environment:

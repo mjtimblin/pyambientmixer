@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional, List
 
-from src.models.channel import Channel
+from models.channel import Channel
 
 
 @dataclass(frozen=True)

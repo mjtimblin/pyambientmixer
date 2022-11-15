@@ -3,8 +3,8 @@ import os
 from dataclasses import asdict
 from typing import Optional
 
-from src.config import config
-from src.models.environment import Environment
+from config import config
+from models.environment import Environment
 
 
 class DatasourceInterface:

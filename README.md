@@ -22,19 +22,19 @@ I recommend pip to install the required modules. Install them with
 
 Easy. Get to the mix you'd like to keep. In this example, I went with "**Night in a Medieval Monastery**".
 
-Just run python -m src.main --url` with the url.
+Just run python main.py --url` with the url.
 
 In our example :
 
-`python -m src.main --url http://religion.ambient-mixer.com/night-in-a-medieval-monastery`
+`python main.py --url http://religion.ambient-mixer.com/night-in-a-medieval-monastery`
 
 Once the downloads are complete, the mix will start playing. You will also see a line printed to the console, like this:
 
-`Environment saved as id: ambient-mixer_environment_48152`
+`Environment saved as id: Night_in_a_Medieval_Monastery_48152`
 
 Once the mix is initially downloaded, you can play it again without making any web requests to ambient-mixer by running
 
-`python -m src.main --environment ambient-mixer_environment_48152`
+`python main.py --environment Night_in_a_Medieval_Monastery_48152`
 
 The environment details can be found `data/environments.json`.
 

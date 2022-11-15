@@ -5,11 +5,11 @@ import untangle
 from abc import ABC
 from bs4 import BeautifulSoup
 
-from src.common import download_file
-from src.config import config
-from src.datasources.datasource_interface import DatasourceInterface
-from src.models.channel import Channel
-from src.models.environment import Environment
+from common import download_file
+from config import config
+from datasources.datasource_interface import DatasourceInterface
+from models.channel import Channel
+from models.environment import Environment
 
 _XML_TEMPLATE_URL_PREFIX = "http://xml.ambient-mixer.com/audio-template?player=html5&id_template="
 _ENVIRONMENT_ID_REGEX = re.compile(r"AmbientMixer.setup\(([0-9]+)\);")
@@ -65,12 +65,16 @@ class AmbientMixer(DatasourceInterface, ABC):
             channels.append(channel)
 
         self.environment = Environment(
-            id=f'ambient-mixer_environment_{environment_id}',
+            id=f'{self._make_string_filesafe(environment_name)}_{environment_id}',
             name=environment_name,
             src_url=self.url,
             channels=channels,
             attribution=attribution,
         )
+
+    def _make_string_filesafe(self, string):
+        return ''.join([c for c in string.replace(' ', '_') if
+                                  c.isalpha() or c.isdigit() or c == '_' or c == '-']).rstrip()
 
     def _download_channel_audio(self, url):
         relative_filepath = self._get_audio_filepath_relative_to_audio_dir(url)

@@ -4,8 +4,8 @@ from random import randint
 
 import pygame
 
-from src.config import config
-from src.models.channel import Channel
+from config import config
+from models.channel import Channel
 
 
 class PlayerChannel:
