@@ -8,3 +8,8 @@ def download_file(url, filepath):
         file.write(response.content)
 
     print("Saved {} as {}".format(url, filepath))
+
+
+def make_filesafe(s: str):
+    return ''.join([c for c in s.replace(' ', '_') if
+                    c.isalpha() or c.isdigit() or c == '_' or c == '-']).rstrip()
